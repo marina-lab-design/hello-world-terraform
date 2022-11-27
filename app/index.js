@@ -7,17 +7,24 @@ http.createServer(function (request, response) {
    response.writeHead(200, {'Content-Type': 'text/plain'});
 
 
-   var http = require('http');
+   var server_name = request.headers["server-name"];
 
-   http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-     resp.on('data', function(ip) {
+   if(server_name != undefined){
 
-       response_string = 'Hello World from '+ip+'\n';
+     response.end('Hello World from '+server_name+'\n');
 
-       response.end(response_string);
+   }
+   else{
+     var http = require('http');
 
+     http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
+       resp.on('data', function(ip) {
+
+         response.end('Hello World from '+ip+'\n');
+
+       });
      });
-   })
+   }
 
 
 }).listen(80);
