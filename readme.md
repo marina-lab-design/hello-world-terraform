@@ -16,4 +16,4 @@ Hello World App on Docker, Nginx & AWS ECS using Terraform
 <pre> terraform init </pre>
 <pre> terraform plan -var app_count=2 image_uri=< app_docker_image_uri_from_ECR_or_docker_hub > -out=tfplan </pre>
 <pre> terraform apply "tfplan" </pre>
-5. Will take some time to deploy resources on AWS. Load balancer URL will be shown on the terminal. Put the load balancer URL to the web browser to access the "Hello World" app
+5. Will take some time to deploy resources on AWS. Load balancer URL will be shown in the terminal. Put the load balancer URL to web browser to access the "Hello World" app
