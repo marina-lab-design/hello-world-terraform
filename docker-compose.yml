@@ -1,0 +1,22 @@
+
+# docker-compose.yml file
+version: '3'
+
+services:
+  nodeserver1:
+    restart: unless-stopped
+    build:
+        context: ./app
+
+  nodeserver2:
+    restart: unless-stopped
+    build:
+        context: ./app
+
+  nginx:
+    restart: unless-stopped
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8080:80"
